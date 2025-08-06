@@ -1,0 +1,87 @@
+:root {
+
+}
+
+@font-face {
+    font-family: 'Planet Kosmos';
+    src: url("./assets/fonts/planet.TTF") format("TrueType");
+}
+
+@font-face {
+    font-family: 'Suspire';
+    src: url("assets/fonts/Suspire.otf") format("opentype");
+}
+
+body {
+    margin: 0;
+    transition: background 100ms
+}
+
+body.layout-1 {
+    background: #F2AD78 /*pinkish cinnamon*/
+}
+
+body.layout-1:has(h1:hover) {
+    background: #B5FFC2 /*turquoise green*/
+}
+
+body.layout-1 h1{
+    color: #1B3644 /* slate colour */
+}
+
+body.layout-1 h1:hover{
+    color: #A93400 /*burnt sienna*/
+}
+
+
+.layout-1 h1 > span {
+    font-size: 70px;
+}
+
+body.layout-2 {
+    background: white
+}
+
+body.layout-2:has(h1:hover) {
+    background: black
+}
+
+body.layout-2 h1{
+    
+}
+
+body.layout-2 h1:hover{
+    
+}
+
+body.layout-3 {
+    background: white
+}
+
+body.layout-3:has(h1:hover) {
+    background: black
+}
+
+body.layout-3 h1{
+    
+}
+
+body.layout-3 h1:hover{
+    
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 50px;
+    font-family: 'Suspire', serif;
+    transition: color 100ms;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
