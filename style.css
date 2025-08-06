@@ -14,14 +14,15 @@
 
 body {
     margin: 0;
-    transition: background 100ms
+    height: 100vh;
+    transition: background 300ms
 }
 
 body.layout-1 {
     background: #F2AD78 /*pinkish cinnamon*/
 }
 
-body.layout-1:has(h1:hover) {
+body.layout-1.alt {
     background: #B5FFC2 /*turquoise green*/
 }
 
@@ -29,7 +30,7 @@ body.layout-1 h1{
     color: #1B3644 /* slate colour */
 }
 
-body.layout-1 h1:hover{
+body.layout-1.alt h1{
     color: #A93400 /*burnt sienna*/
 }
 
@@ -75,7 +76,7 @@ h1 {
     text-transform: uppercase;
     font-size: 50px;
     font-family: 'Suspire', serif;
-    transition: color 100ms;
+    transition: color 500ms;
 }
 
 .container {
@@ -84,4 +85,19 @@ h1 {
     width: 100%;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+
+.a-enter-vr {
+    display: none;
+}
+
+.loading-screen {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 3;
+    background: black;
+    opacity: 1;
+    transition: opacity 0.5s;
 }

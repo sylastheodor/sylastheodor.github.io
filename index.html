@@ -1,20 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>sylas</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./assets/sylas_favicon.ico" type="image/x-icon">
-    <script type="text/javascript">
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/@c-frame/aframe-physics-system@4.2.2/dist/aframe-physics-system.min.js"></script>
+</head>
+<body class="layout-1">
+<div class="loading-screen"></div>
+<div class="container">
+    <a-scene physics>
+        <a-assets>
+            <a-asset-item id="me" src="assets/me.glb"></a-asset-item>
+        </a-assets>
+        <a-camera wasd-controls-enabled="false" look-controls-enabled="false"></a-camera>
+        <a-entity id="sylas" gltf-model="assets/me.glb" scale="2 2 2" modify-materials="" rotation="0 0 0"
+                  position="-0.033 1 -0.9"
+        ></a-entity>
+    </a-scene>
+    <h1><span>S</span>ylas</h1>
+</div>
+<script src="index.js"></script>
+<script type="text/javascript">
+    let head = document.querySelector('#sylas')
+
+    function spinToggle(axisIndex) {
+        let currRotation = head.getAttribute('rotation');
+        currRotation['y'] = currRotation['y'] + 360
+        if (axisIndex % 2 === 1) {
+            head.removeAttribute('animation')
+            $('body').removeClass('alt');
+        } else {
+            console.log(currRotation);
+            head.setAttribute('animation', {
+                property: 'rotation',
+                to: `0, ${currRotation.y}, 0`,
+                loop: true,
+                dur: 3000,
+                easing: 'linear'
+            })
+            $('body').addClass('alt');
+        }
+    }
+
+    let axisIndex = 0
+        head.addEventListener('model-loaded', () => {
+            $('.loading-screen').css('opacity', 0);
+        })
+        $(document).on('click', () => {
+            console.log('click', head.getAttribute('rotation'))
+            spinToggle(axisIndex)
+            axisIndex++
+        })
 
     </script>
-  </head>
-  <body class="layout-1">
-    <div class="container">
-        <h1><span>S</span>ylas</h1>
-    </div>
-    <script src="index.js"></script>
-  </body>
+</body>
 </html>
